@@ -30,9 +30,9 @@ const firstTodo = new todo(
     "High"
 );
 
-export function editTodo() {
-    console.log("changing");
-}
+// export function edit() {
+//     window.prompt("New todo: something else");
+// }
 
 // // Gabriella's code:
 // console.log("i can code desu");

@@ -1,4 +1,4 @@
-import { editTodo, todo_list } from "./logic.js";
+import { edit, todo_list } from "./logic.js";
 import { UI } from "./interface.js";
 
 let editBtn;
@@ -6,20 +6,21 @@ let editBtn;
 const todoDisplay = new UI();
 
 todo_list.forEach((todo) => {
-    todoDisplay.renderTodo(
-        todo.title,
-        todo.description,
-        todo.dueDate,
-        todo.priority,
-        todo.id
-    );
+    todoDisplay.renderTodo(todo);
     editBtn = document.querySelector(".edit_btn");
 });
 
 editBtn.addEventListener("click", function () {
     // console.log(this.dataset.btnid);
-    const selectedTodo = document.querySelector(
-        `[data-todoid="${this.dataset.btnid}"]`
+
+    // // This code is wrong by selecting the DOM element which has the same data-todoid as the button. The correct way is to edit the source object in the todo_list.
+    // const selectedTodo = document.querySelector(
+    //     `[data-todoid="${this.dataset.btnid}"]`
+    // );
+    // console.log(selectedTodo);
+
+    const selectedTodo = todo_list.filter(
+        (todo) => todo.id === this.dataset.btnid
     );
     console.log(selectedTodo);
 });
