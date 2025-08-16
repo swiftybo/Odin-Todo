@@ -1,0 +1,45 @@
+body {
+    padding: 0rem;
+    margin: 0rem;
+    background-color: #ece4b7;
+}
+
+header {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 1rem;
+    color: #694f5d;
+}
+
+#todo_content {
+    margin: 1.5rem;
+}
+
+.todo {
+    width: 15rem;
+    min-height: 10rem;
+    padding: 1rem;
+    outline: 2px solid black;
+    border-radius: 0.5rem;
+    background-color: #e6aa68;
+}
+
+.todo_title {
+    margin: 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.todo_btn {
+    width: 49%;
+    border-radius: 0.5rem;
+}
+
+.edit_btn {
+    background-color: #ece4b7;
+}
+
+.done_btn {
+    background-color: #7fb069;
+}
