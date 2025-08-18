@@ -1,4 +1,5 @@
 const todo_content = document.getElementById("todo_content");
+const edit_form = document.querySelector(".edit_form");
 
 export class UI {
     constructor() {}
@@ -19,19 +20,18 @@ export class UI {
         todo_content.insertAdjacentHTML("beforeend", html);
     }
 
-    editTodo() {
-        const html = `<div class="todo">
-        <h3 class="todo_title">${title}</h3>
-        <div><strong>Description: </strong><span><input placeholder=""></input>></span></div>
+    openEditForm(todo) {
+        const html = `<h2 class="todo_title">Edit "${todo.title}" Todo</h2><br>
+        <div><strong>Description: </strong><textarea rows="4" cols="40" class="description__area" placeholder="${todo.description}"></textarea></div>
         <br>
-        <div><strong>Due Date: </strong><span>${dueDate}</span></div>
+        <div><strong>Due Date: </strong><input class="date__input" placeholder="${todo.dueDate}"></input></div>
         <br>
-        <div><strong>Priority: </strong><span>${priority}</span></div>
+        <div><strong>Priority: </strong><input class="priority__input" placeholder="${todo.priority}"></input></div>
         <br>
-        <button class="todo_btn edit_btn">Edit</button>
-        <button class="todo_btn done_btn">Mark Complete</button>
-        </div>`;
-    }
+        <button class="todo_btn close_btn">Close</button>
+        <button class="todo_btn confirm_btn">Confirm</button>`;
 
-    openEditForm(todo) {}
+        edit_form.insertAdjacentHTML("afterbegin", html);
+        edit_form.style.display = "block";
+    }
 }
