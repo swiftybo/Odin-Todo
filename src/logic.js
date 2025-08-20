@@ -21,6 +21,12 @@ class todo {
         this.id = `${now.getHours()}${now.getMinutes()}${now.getDate()}`;
         // console.log(this.id);
     }
+
+    editTodo(newDescription, newDate, newPriority) {
+        this.description = newDescription;
+        this.dueDate = newDate;
+        this.priority = newPriority;
+    }
 }
 
 const firstTodo = new todo(
@@ -29,10 +35,6 @@ const firstTodo = new todo(
     "22/07/2025",
     "High"
 );
-
-// export function edit() {
-//     window.prompt("New todo: something else");
-// }
 
 // // Gabriella's code:
 // console.log("i can code desu");

@@ -20,9 +20,11 @@ export class UI {
         todo_content.insertAdjacentHTML("beforeend", html);
     }
 
-    openEditForm(todo) {
+    openEditForm(todo, todoid) {
+        edit_form.id = todoid;
+
         const html = `<h2 class="todo_title">Edit "${todo.title}" Todo</h2><br>
-        <div><strong>Description: </strong><textarea rows="4" cols="40" class="description__area" placeholder="${todo.description}"></textarea></div>
+        <div><strong>Description: </strong><textarea rows="4" cols="40" class="description__area" placeholder="${todo.description}" defaultValue=${todo.description}></textarea></div>
         <br>
         <div><strong>Due Date: </strong><input class="date__input" placeholder="${todo.dueDate}"></input></div>
         <br>
@@ -38,5 +40,10 @@ export class UI {
     closeEditForm() {
         edit_form.style.display = "none";
         edit_form.innerHTML = "";
+    }
+
+    submitEditForm() {
+        const descriptionInput = document.querySelector(".description__area");
+        console.log(descriptionInput.value);
     }
 }

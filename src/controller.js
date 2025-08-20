@@ -46,12 +46,12 @@ function addGlobalEventListener(type, selector, DOMelement, callback) {
     });
 }
 
-addGlobalEventListener("click", ".edit_btn", todo_content, (e) => {
+addGlobalEventListener("click", ".edit_btn", todo_content, function (e) {
     const selectedTodo = todo_list.filter(
         (todo) => todo.id === e.target.dataset.btnid
     );
     // console.log(selectedTodo);
-    todoDisplay.openEditForm(selectedTodo[0]);
+    todoDisplay.openEditForm(selectedTodo[0], selectedTodo[0].id);
 });
 
 addGlobalEventListener("click", ".close_btn", edit_form, (e) => {
@@ -61,4 +61,10 @@ addGlobalEventListener("click", ".close_btn", edit_form, (e) => {
         )
     )
         todoDisplay.closeEditForm();
+});
+
+addGlobalEventListener("click", ".confirm_btn", edit_form, function (e) {
+    const descriptionInput = document.querySelector(".description__area");
+    const dateInput = document.querySelector(".date__input");
+    const priorityInput = document.querySelector(".priority__input");
 });
