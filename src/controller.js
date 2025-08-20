@@ -1,6 +1,8 @@
+// IMPORTS | EXPORTS
 import { edit, todo_list } from "./logic.js";
 import { UI } from "./interface.js";
 
+// DOM Elements
 const todo_content = document.getElementById("todo_content");
 
 const todoDisplay = new UI();
@@ -25,13 +27,29 @@ todo_list.forEach((todo) => {
 //     todoDisplay.openEditForm(selectedTodo[0]);
 // });
 
-// Event delegation to the Edit Buttons on every Todo
-todo_content.addEventListener("click", function (e) {
-    if (e.target.matches(".edit_btn")) {
-        const selectedTodo = todo_list.filter(
-            (todo) => todo.id === e.target.dataset.btnid
-        );
-        console.log(selectedTodo);
-        todoDisplay.openEditForm(selectedTodo[0]);
-    }
+// // Event delegation to the Edit Buttons on every Todo
+// todo_content.addEventListener("click", function (e) {
+//     if (e.target.matches(".edit_btn")) {
+//         const selectedTodo = todo_list.filter(
+//             (todo) => todo.id === e.target.dataset.btnid
+//         );
+//         console.log(selectedTodo);
+//         todoDisplay.openEditForm(selectedTodo[0]);
+//     }
+// });
+
+function addGlobalEventListener(type, selector, callback) {
+    document.addEventListener(type, function (e) {
+        if (e.target.matches(selector)) {
+            callback(e);
+        }
+    });
+}
+
+addGlobalEventListener("click", ".edit_btn", (e) => {
+    const selectedTodo = todo_list.filter(
+        (todo) => todo.id === e.target.dataset.btnid
+    );
+    console.log(selectedTodo);
+    todoDisplay.openEditForm(selectedTodo[0]);
 });
