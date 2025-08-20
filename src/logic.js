@@ -13,13 +13,13 @@ class todo {
 
     addToList() {
         todo_list.push(this);
-        console.log(todo_list);
+        // console.log(todo_list);
     }
 
     generateID() {
         const now = new Date();
         this.id = `${now.getHours()}${now.getMinutes()}${now.getDate()}`;
-        console.log(this.id);
+        // console.log(this.id);
     }
 }
 

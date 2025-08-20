@@ -34,4 +34,9 @@ export class UI {
         edit_form.insertAdjacentHTML("afterbegin", html);
         edit_form.style.display = "block";
     }
+
+    closeEditForm() {
+        edit_form.style.display = "none";
+        edit_form.innerHTML = "";
+    }
 }
