@@ -1,5 +1,5 @@
 // IMPORTS | EXPORTS
-import { edit, todo_list } from "./logic.js";
+import { todo, todo_list } from "./logic.js";
 import { UI } from "./interface.js";
 
 // DOM Elements
@@ -7,6 +7,19 @@ const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
 
 const todoDisplay = new UI();
+const first_todo = new todo(
+    "Practice Violin",
+    "Practice violin songs for Sophie's wedding.",
+    "22/08/2025",
+    "High"
+);
+
+const second_todo = new todo(
+    "Finish Odin Project",
+    "Complete all modules and projects on the Odin Project Intermediate Js Course.",
+    "26/09/2025",
+    "High"
+);
 
 todo_list.forEach((todo) => {
     todoDisplay.renderTodo(todo);
@@ -67,4 +80,35 @@ addGlobalEventListener("click", ".confirm_btn", edit_form, function (e) {
     const descriptionInput = document.querySelector(".description__area");
     const dateInput = document.querySelector(".date__input");
     const priorityInput = document.querySelector(".priority__input");
+
+    // Blocker if there is any empty input field, which prompts the user to check all fields are populated.
+    if (
+        descriptionInput.value === "" ||
+        dateInput.value === "" ||
+        priorityInput.value === ""
+    ) {
+        alert("Please make sure every field is populated before submitting.");
+        return;
+    }
+
+    // LESSONLEARNT Remeber that array.filter method returns an ARRAY of objects that pass the test! Here array destructuring is used.
+    const [selectedTodo] = todo_list.filter((todo) => {
+        return todo.id === edit_form.id;
+    });
+
+    // Edits object fields for the relevant todo
+    selectedTodo.editTodo(
+        descriptionInput.value,
+        dateInput.value,
+        priorityInput.value
+    );
+
+    // Removes HTML for existing relevant todo
+    todoDisplay.removeTodo(selectedTodo.id);
+
+    // Renders new HTML for todo with edited information
+    todoDisplay.renderTodo(selectedTodo);
+
+    // Closes the edit form
+    todoDisplay.closeEditForm();
 });

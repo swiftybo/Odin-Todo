@@ -5,7 +5,7 @@ export class UI {
     constructor() {}
 
     renderTodo(todo) {
-        const html = `<div class="todo" id="first_todo" data-todoid=${todo.id}>
+        const html = `<div class="todo" data-todoid=${todo.id}>
         <h3 class="todo_title">${todo.title}</h3>
         <div><strong>Description: </strong><span>${todo.description}</span></div>
         <br>
@@ -24,11 +24,11 @@ export class UI {
         edit_form.id = todoid;
 
         const html = `<h2 class="todo_title">Edit "${todo.title}" Todo</h2><br>
-        <div><strong>Description: </strong><textarea rows="4" cols="40" class="description__area" placeholder="${todo.description}" defaultValue=${todo.description}></textarea></div>
+        <div><strong>Description: </strong><textarea rows="4" cols="40" class="description__area" placeholder="Previous description: ${todo.description}">${todo.description}</textarea></div>
         <br>
-        <div><strong>Due Date: </strong><input class="date__input" placeholder="${todo.dueDate}"></input></div>
+        <div><strong>Due Date: </strong><input class="date__input" placeholder="Previous date: ${todo.dueDate}" value="${todo.dueDate}"></input></div>
         <br>
-        <div><strong>Priority: </strong><input class="priority__input" placeholder="${todo.priority}"></input></div>
+        <div><strong>Priority: </strong><input class="priority__input" placeholder="Previous priority: ${todo.priority} "value="${todo.priority}"></input></div>
         <br>
         <button class="todo_btn close_btn">Close</button>
         <button class="todo_btn confirm_btn">Confirm</button>`;
@@ -42,8 +42,10 @@ export class UI {
         edit_form.innerHTML = "";
     }
 
-    submitEditForm() {
-        const descriptionInput = document.querySelector(".description__area");
-        console.log(descriptionInput.value);
+    removeTodo(id) {
+        const selectedTodoHTML = document.querySelector(
+            `[data-todoid="${id}"]`
+        );
+        selectedTodoHTML.remove();
     }
 }

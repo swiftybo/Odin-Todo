@@ -1,6 +1,6 @@
 export const todo_list = [];
 
-class todo {
+export class todo {
     constructor(title, description, dueDate, priority, project = "General") {
         this.title = title;
         this.description = description;
@@ -22,19 +22,20 @@ class todo {
         // console.log(this.id);
     }
 
-    editTodo(newDescription, newDate, newPriority) {
+    editTodo(
+        newDescription = this.description,
+        newDate = this.dueDate,
+        newPriority = this.priority
+    ) {
         this.description = newDescription;
         this.dueDate = newDate;
         this.priority = newPriority;
     }
-}
 
-const firstTodo = new todo(
-    "Practice Violin",
-    "Practice violin songs for Sophie's wedding",
-    "22/07/2025",
-    "High"
-);
+    print() {
+        console.log("hi");
+    }
+}
 
 // // Gabriella's code:
 // console.log("i can code desu");
