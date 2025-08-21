@@ -14,6 +14,7 @@ const first_todo = new todo(
     "High"
 );
 
+// // LESSONLEARNT todo ID is now based on todo name and due date instead of only time of creation so that multiple todos can be rendered at start.
 const second_todo = new todo(
     "Finish Odin Project",
     "Complete all modules and projects on the Odin Project Intermediate Js Course.",
@@ -25,7 +26,9 @@ todo_list.forEach((todo) => {
     todoDisplay.renderTodo(todo);
 });
 
-// // LESSONLEARNT This code is wrong by only adding event listeners to existing HTML DOM elements and not dynamically created DOM element.
+console.log(todo_list);
+
+// // LESSONLEARNT This code is wrong by only adding event listeners to existing HTML DOM elements and not dynamically created DOM element. This has been fixed by using event delegation through the addGlobalEventListener function.
 // editBtn.addEventListener("click", function () {
 //     // console.log(this.dataset.btnid);
 

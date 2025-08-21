@@ -18,7 +18,10 @@ export class todo {
 
     generateID() {
         const now = new Date();
-        this.id = `${now.getHours()}${now.getMinutes()}${now.getDate()}`;
+        this.id = `${this.title[0]}${now.getHours()}${this.dueDate.slice(
+            0,
+            2
+        )}${now.getDate()}`;
         // console.log(this.id);
     }
 
