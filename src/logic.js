@@ -34,10 +34,10 @@ export class todo {
         this.dueDate = newDate;
         this.priority = newPriority;
     }
+}
 
-    print() {
-        console.log("hi");
-    }
+export function createTodo(title, description, dueDate, priority) {
+    return new todo(title, description, dueDate, priority);
 }
 
 // // Gabriella's code:

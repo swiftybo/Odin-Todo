@@ -44,7 +44,7 @@ console.log(todo_list);
 // });
 
 // // Event delegation to the Edit Buttons on every Todo
-// // LESSONLEARNT Now replaced with global event listener function.
+// // LESSONLEARNT Now replaced with addGlobalEventListener function.
 // todo_content.addEventListener("click", function (e) {
 //     if (e.target.matches(".edit_btn")) {
 //         const selectedTodo = todo_list.filter(
