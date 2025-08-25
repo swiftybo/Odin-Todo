@@ -1,7 +1,7 @@
 body {
     padding: 0rem;
     margin: 0rem;
-    background-color: #ece4b7;
+    background-color: #f4f1de;
 }
 
 header {
@@ -9,15 +9,24 @@ header {
     font-size: 3rem;
     font-weight: 500;
     margin: 1rem;
-    color: #694f5d;
+    color: #3d305b;
 }
 
 .subtitle {
-    margin-left: 5rem;
+    margin-left: 5vw;
+}
+
+.add_btn {
+    margin: 0vh 5vw;
+    width: 90vw;
+    height: 5vh;
+    font-size: 1.25rem;
+    background-color: #81b29a;
+    border-radius: 0.5rem;
 }
 
 #todo_content {
-    margin: 1.5rem;
+    margin: 3vh 5vw;
     display: flex;
 }
 
@@ -28,7 +37,7 @@ header {
     padding: 1rem;
     outline: 2px solid black;
     border-radius: 0.5rem;
-    background-color: #e6aa68;
+    background-color: #f2cc8f;
 }
 
 .todo_title {
@@ -43,7 +52,7 @@ header {
 }
 
 .edit_btn {
-    background-color: #ece4b7;
+    background-color: #e07a5f;
 }
 
 .done_btn {
@@ -73,4 +82,16 @@ header {
 
 .description__area {
     resize: none;
+}
+
+.add_form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: #d4c1ec;
+    outline: 2px solid black;
+    min-width: 30vw;
 }

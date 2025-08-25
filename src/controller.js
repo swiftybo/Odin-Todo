@@ -5,6 +5,7 @@ import { UI } from "./interface.js";
 // DOM Elements
 const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
+const add_btn = document.querySelector(".add_btn");
 
 const todoDisplay = new UI();
 const first_todo = new todo(
@@ -115,3 +116,5 @@ addGlobalEventListener("click", ".confirm_btn", edit_form, function (e) {
     // Closes the edit form
     todoDisplay.closeEditForm();
 });
+
+add_btn.addEventListener("click", function () {});
