@@ -8,9 +8,13 @@ const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
 const add_form = document.querySelector(".add_form");
 
-// Buttons - Add Form
+// Buttons - Top Level
+const sidebarBtn = document.getElementById("sidebar_btn");
+const collapseBtn = document.querySelector(".collapse_btn");
 // This is the button to display the 'add todo' form.
 const todoadd_btn = document.querySelector(".todoadd_btn");
+
+// Buttons - Add Form
 const exit_form = document.querySelector(".exitform_btn");
 const add_btn = document.querySelector(".add_btn");
 const add__title = document.getElementById("new_title");
@@ -183,4 +187,16 @@ add_btn.addEventListener("click", function () {
         todoDisplay.exitAddForm();
         renderTodos();
     }
+});
+
+// Event listener to expand collapsible sidebar
+sidebarBtn.addEventListener("click", function () {
+    document.getElementById("sidebar").style.width = "15.5rem";
+    document.querySelector(".container").style.marginLeft = "15.5rem";
+});
+
+// Event listener to shrink collapsible sidebar
+collapseBtn.addEventListener("click", function () {
+    document.getElementById("sidebar").style.width = "0rem";
+    document.querySelector(".container").style.marginLeft = "0rem";
 });

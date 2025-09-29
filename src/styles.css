@@ -2,6 +2,16 @@ body {
     padding: 0rem;
     margin: 0rem;
     background-color: #f4f1de;
+    max-width: 100%;
+}
+
+#sidebar_btn {
+    position: relative;
+    left: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    border: 0rem;
+    background-color: #f4f1de;
 }
 
 header {
@@ -18,8 +28,8 @@ header {
 
 .todoadd_btn {
     margin: 0vh 5vw;
-    width: 90vw;
-    height: 5vh;
+    width: 90%;
+    height: 6vh;
     font-size: 1.25rem;
     background-color: #81b29a;
     border-radius: 0.5rem;
@@ -79,7 +89,7 @@ header {
 }
 
 .undone_btn {
-    background-color: rgb(233, 42, 42);
+    background-color: rgb(231, 25, 25);
 }
 
 .close_btn {
@@ -137,7 +147,50 @@ header {
     right: 0.4rem;
     top: 0.4rem;
     background-color: #d4c1ec;
-    border: 0;
+    border: 0rem;
     font-size: 1.6rem;
-    color: red;
+    color: rgb(231, 25, 25);
+}
+
+#sidebar {
+    height: 100%;
+    width: 0rem;
+    position: fixed;
+    z-index: 1;
+    top: 0rem;
+    left: 0rem;
+    background-color: #3d305b;
+    overflow-x: hidden;
+    padding-top: 3rem;
+    transition: 0.5s;
+}
+
+.navigation_btn {
+    padding: 8px 8px 8px 32px;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    background-color: #3d305b;
+    display: block;
+    transition: 0.3s;
+    border: 0rem;
+}
+
+.navigation_btn:hover {
+    color: #e07a5f;
+}
+
+.collapse_btn {
+    position: absolute;
+    top: 0rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    margin-left: 3rem;
+    border: 0rem;
+    background-color: #3d305b;
+    color: whitesmoke;
+}
+
+.container {
+    transition: margin-left 0.5s;
+    padding: 1.5rem;
 }
