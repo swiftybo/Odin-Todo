@@ -22,7 +22,7 @@ const todoDisplay = new UI();
 new todo(
     "Practice Violin",
     "Practice violin songs for Sophie's wedding.",
-    "22/08/2025",
+    "2025-08-21",
     "High"
 );
 
@@ -30,7 +30,7 @@ new todo(
 new todo(
     "Finish Odin Project",
     "Complete all modules and projects on the Odin Project Intermediate Js Course.",
-    "26/09/2025",
+    "2025-09-26",
     "High"
 );
 

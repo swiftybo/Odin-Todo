@@ -4,11 +4,16 @@ export class todo {
     constructor(title, description, dueDate, priority, project = "General") {
         this.title = title;
         this.description = description;
-        this.dueDate = dueDate;
         this.priority = priority;
         this.project = project;
+        this.formatDate(dueDate);
         this.addToList();
         this.generateID();
+    }
+
+    formatDate(dueDate) {
+        const formattedDate = dueDate.split("-").reverse().join("-");
+        this.formattedDueDate = formattedDate;
     }
 
     addToList() {
@@ -17,15 +22,14 @@ export class todo {
 
     generateID() {
         const now = new Date();
-        this.id = `${this.title[0]}${now.getHours()}${this.dueDate.slice(
-            0,
-            2
-        )}${now.getDate()}`;
+        this.id = `${
+            this.title[0]
+        }${now.getHours()}${this.formattedDueDate.slice(0, 2)}${now.getDate()}`;
     }
 
     editTodo(
         newDescription = this.description,
-        newDate = this.dueDate,
+        newDate = this.formattedDueDate,
         newPriority = this.priority
     ) {
         this.description = newDescription;
