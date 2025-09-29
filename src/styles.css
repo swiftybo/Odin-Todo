@@ -38,22 +38,25 @@ header {
     padding: 1rem;
     outline: 2px solid black;
     border-radius: 0.5rem;
+}
+
+.Incomplete {
     background-color: #f2cc8f;
 }
 
-.complete {
+.Complete {
     background-color: rgb(69, 175, 69);
 }
 
 .completedTodoHeader {
     text-align: center;
     margin: 0rem;
-    padding: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .todo_title {
     margin: 0;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     text-align: center;
 }
 
@@ -73,6 +76,10 @@ header {
 
 .done_btn {
     background-color: #7fb069;
+}
+
+.undone_btn {
+    background-color: rgb(233, 42, 42);
 }
 
 .close_btn {

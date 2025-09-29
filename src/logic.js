@@ -38,8 +38,8 @@ export class todo {
         this.priority = newPriority;
     }
 
-    markTodoComplete() {
-        this.status = "Complete";
+    toggleTodoStatus() {
+        this.status = this.status === "Complete" ? "Incomplete" : "Complete";
     }
 }
 

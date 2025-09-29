@@ -78,6 +78,7 @@ function addGlobalEventListener(type, selector, DOMelement, callback) {
     });
 }
 
+// Event listener for edit button on each todo
 addGlobalEventListener("click", ".edit_btn", todo_content, function (e) {
     const selectedTodo = todo_list.filter(
         (todo) => todo.id === e.target.dataset.btnid
@@ -86,29 +87,29 @@ addGlobalEventListener("click", ".edit_btn", todo_content, function (e) {
     todoDisplay.openEditForm(selectedTodo[0], selectedTodo[0].id);
 });
 
+// Event listener to mark a todo as "Complete"
 addGlobalEventListener("click", ".done_btn", todo_content, function (e) {
     const [selectedTodo] = todo_list.filter(
         (todo) => todo.id === e.target.dataset.btnid
     );
-    selectedTodo.markTodoComplete();
+    selectedTodo.toggleTodoStatus();
     console.log(selectedTodo);
 
-    const selectedDOMTodo = e.target.closest(".todo");
-    console.log(selectedDOMTodo);
-
-    // selectedTodo.classList.toggle("complete");
-
-    // const completedHeader = document.createElement("h3");
-    // completedHeader.textContent = "[COMPLETED]";
-    // completedHeader.classList.add("completedTodoHeader");
-
-    // selectedTodo.insertAdjacentElement("afterbegin", completedHeader);
-
-    // const completedBtn = e.target;
-    // completedBtn.textContent = "Mark Incomplete";
-    // completedBtn.style.backgroundColor = "red";
+    renderTodos();
 });
 
+// Event listener to mark a todo as "Incomplete"
+addGlobalEventListener("click", ".undone_btn", todo_content, function (e) {
+    const [selectedTodo] = todo_list.filter(
+        (todo) => todo.id === e.target.dataset.btnid
+    );
+    selectedTodo.toggleTodoStatus();
+    console.log(selectedTodo);
+
+    renderTodos();
+});
+
+// Event listener to close 'edit form'
 addGlobalEventListener("click", ".close_btn", edit_form, (e) => {
     if (
         confirm(
@@ -118,10 +119,11 @@ addGlobalEventListener("click", ".close_btn", edit_form, (e) => {
         todoDisplay.closeEditForm();
 });
 
+// Event listener to submit 'edit form'
 addGlobalEventListener("click", ".confirm_btn", edit_form, function (e) {
-    const descriptionInput = document.querySelector(".description__area");
-    const dateInput = document.querySelector(".date__input");
-    const priorityInput = document.querySelector(".priority__input");
+    const descriptionInput = document.getElementById("amended_description");
+    const dateInput = document.getElementById("amended_date");
+    const priorityInput = document.getElementById("amended_priority");
 
     // Blocker if there is any empty input field, which prompts the user to check all fields are populated.
     if (
@@ -138,10 +140,13 @@ addGlobalEventListener("click", ".confirm_btn", edit_form, function (e) {
         return todo.id === edit_form.id;
     });
 
+    // Format the date
+    const formattedDate = selectedTodo.formatDate(dateInput.value);
+
     // Edits object fields for the relevant todo
     selectedTodo.editTodo(
         descriptionInput.value,
-        dateInput.value,
+        formattedDate,
         priorityInput.value
     );
 
@@ -179,16 +184,3 @@ add_btn.addEventListener("click", function () {
         renderTodos();
     }
 });
-
-// function applyTodoStyling(todos) {
-//     for (const todo of todos) {
-//         console.log(todo[data - todoid]);
-//     }
-//     // todos.forEach((todo) => {
-//     //     // todo_list.filter((todo) => todo.id = )
-//     //     // }
-//     //     console.log(todo);
-//     // });
-// }
-
-// applyTodoStyling(todo_content.children);
