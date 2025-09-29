@@ -41,6 +41,16 @@ header {
     background-color: #f2cc8f;
 }
 
+.complete {
+    background-color: rgb(69, 175, 69);
+}
+
+.completedTodoHeader {
+    text-align: center;
+    margin: 0rem;
+    padding: 0.5rem;
+}
+
 .todo_title {
     margin: 0;
     padding-bottom: 1rem;

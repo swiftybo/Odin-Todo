@@ -6,6 +6,7 @@ export class todo {
         this.description = description;
         this.priority = priority;
         this.project = project;
+        this.status = "Incomplete";
         this.formatDate(dueDate);
         this.addToList();
         this.generateID();
@@ -35,6 +36,10 @@ export class todo {
         this.description = newDescription;
         this.dueDate = newDate;
         this.priority = newPriority;
+    }
+
+    markTodoComplete() {
+        this.status = "Complete";
     }
 }
 

@@ -6,7 +6,7 @@ export class UI {
     constructor() {}
 
     renderTodo(todo) {
-        const html = `<div class="todo" data-todoid=${todo.id}>
+        const html = `<div class="todo" data-todoid="${todo.id}">
         <h3 class="todo_title">${todo.title}</h3>
         <div><strong>Description: </strong><span>${todo.description}</span></div>
         <br>
@@ -15,7 +15,7 @@ export class UI {
         <div><strong>Priority: </strong><span>${todo.priority}</span></div>
         <br>
         <button class="todo_btn edit_btn" data-btnid=${todo.id}>Edit</button>
-        <button class="todo_btn done_btn">Mark Complete</button>
+        <button class="todo_btn done_btn" data-btnid=${todo.id}>Mark Complete</button>
         </div>`;
 
         todo_content.insertAdjacentHTML("beforeend", html);

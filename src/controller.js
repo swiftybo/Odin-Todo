@@ -86,6 +86,29 @@ addGlobalEventListener("click", ".edit_btn", todo_content, function (e) {
     todoDisplay.openEditForm(selectedTodo[0], selectedTodo[0].id);
 });
 
+addGlobalEventListener("click", ".done_btn", todo_content, function (e) {
+    const [selectedTodo] = todo_list.filter(
+        (todo) => todo.id === e.target.dataset.btnid
+    );
+    selectedTodo.markTodoComplete();
+    console.log(selectedTodo);
+
+    const selectedDOMTodo = e.target.closest(".todo");
+    console.log(selectedDOMTodo);
+
+    // selectedTodo.classList.toggle("complete");
+
+    // const completedHeader = document.createElement("h3");
+    // completedHeader.textContent = "[COMPLETED]";
+    // completedHeader.classList.add("completedTodoHeader");
+
+    // selectedTodo.insertAdjacentElement("afterbegin", completedHeader);
+
+    // const completedBtn = e.target;
+    // completedBtn.textContent = "Mark Incomplete";
+    // completedBtn.style.backgroundColor = "red";
+});
+
 addGlobalEventListener("click", ".close_btn", edit_form, (e) => {
     if (
         confirm(
@@ -142,15 +165,30 @@ exit_form.addEventListener("click", function () {
     todoDisplay.exitAddForm();
 });
 
+// Event listener to process form fields and generate new todo
 add_btn.addEventListener("click", function () {
     const newTitle = add__title.value;
     const newDescription = add__description.value;
     const newDate = add__date.value;
     const newPriority = add__priority.value;
 
+    // Ensure all fields in the form are valid before performing any actions
     if (add_form.checkValidity()) {
         createTodo(newTitle, newDescription, newDate, newPriority);
         todoDisplay.exitAddForm();
         renderTodos();
     }
 });
+
+// function applyTodoStyling(todos) {
+//     for (const todo of todos) {
+//         console.log(todo[data - todoid]);
+//     }
+//     // todos.forEach((todo) => {
+//     //     // todo_list.filter((todo) => todo.id = )
+//     //     // }
+//     //     console.log(todo);
+//     // });
+// }
+
+// applyTodoStyling(todo_content.children);
