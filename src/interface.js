@@ -1,5 +1,6 @@
 const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
+const add_form = document.querySelector(".add_form");
 
 export class UI {
     constructor() {}
@@ -23,7 +24,7 @@ export class UI {
     openEditForm(todo, todoid) {
         edit_form.id = todoid;
 
-        const html = `<h2 class="todo_title">Edit "${todo.title}" Todo</h2><br>
+        const html = `<h2 class="form_title">Edit "${todo.title}" Todo</h2><br>
         <div><strong>Description: </strong><textarea rows="4" cols="40" class="description__area" placeholder="Previous description: ${todo.description}">${todo.description}</textarea></div>
         <br>
         <div><strong>Due Date: </strong><input class="date__input" placeholder="Previous date: ${todo.dueDate}" value="${todo.dueDate}"></input></div>
@@ -47,5 +48,14 @@ export class UI {
             `[data-todoid="${id}"]`
         );
         selectedTodoHTML.remove();
+    }
+
+    openAddForm() {
+        add_form.style.display = "block";
+    }
+
+    exitAddForm() {
+        add_form.reset();
+        add_form.style.display = "none";
     }
 }

@@ -13,7 +13,6 @@ export class todo {
 
     addToList() {
         todo_list.push(this);
-        // console.log(todo_list);
     }
 
     generateID() {
@@ -22,7 +21,6 @@ export class todo {
             0,
             2
         )}${now.getDate()}`;
-        // console.log(this.id);
     }
 
     editTodo(

@@ -1,14 +1,25 @@
 // IMPORTS | EXPORTS
-import { todo, todo_list } from "./logic.js";
+import { todo, todo_list, createTodo } from "./logic.js";
 import { UI } from "./interface.js";
 
 // DOM Elements
+// Sections & Forms
 const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
+const add_form = document.querySelector(".add_form");
+
+// Buttons - Add Form
+// This is the button to display the 'add todo' form.
+const todoadd_btn = document.querySelector(".todoadd_btn");
+const exit_form = document.querySelector(".exitform_btn");
 const add_btn = document.querySelector(".add_btn");
+const add__title = document.getElementById("new_title");
+const add__description = document.getElementById("new_description");
+const add__date = document.getElementById("new_date");
+const add__priority = document.getElementById("new_priority");
 
 const todoDisplay = new UI();
-const first_todo = new todo(
+new todo(
     "Practice Violin",
     "Practice violin songs for Sophie's wedding.",
     "22/08/2025",
@@ -16,17 +27,21 @@ const first_todo = new todo(
 );
 
 // // LESSONLEARNT todo ID is now based on todo name and due date instead of only time of creation so that multiple todos can be rendered at start.
-const second_todo = new todo(
+new todo(
     "Finish Odin Project",
     "Complete all modules and projects on the Odin Project Intermediate Js Course.",
     "26/09/2025",
     "High"
 );
 
-todo_list.forEach((todo) => {
-    todoDisplay.renderTodo(todo);
-});
+function renderTodos() {
+    todo_content.innerHTML = "";
+    todo_list.forEach((todo) => {
+        todoDisplay.renderTodo(todo);
+    });
+}
 
+renderTodos();
 console.log(todo_list);
 
 // // LESSONLEARNT This code is wrong by only adding event listeners to existing HTML DOM elements and not dynamically created DOM element. This has been fixed by using event delegation through the addGlobalEventListener function.
@@ -117,4 +132,25 @@ addGlobalEventListener("click", ".confirm_btn", edit_form, function (e) {
     todoDisplay.closeEditForm();
 });
 
-add_btn.addEventListener("click", function () {});
+// Event listener for "Add To-do to Current Project' button
+todoadd_btn.addEventListener("click", function () {
+    todoDisplay.openAddForm();
+});
+
+// Event listener to close 'Add To-do' Form
+exit_form.addEventListener("click", function () {
+    todoDisplay.exitAddForm();
+});
+
+add_btn.addEventListener("click", function () {
+    const newTitle = add__title.value;
+    const newDescription = add__description.value;
+    const newDate = add__date.value;
+    const newPriority = add__priority.value;
+
+    if (add_form.checkValidity()) {
+        createTodo(newTitle, newDescription, newDate, newPriority);
+        todoDisplay.exitAddForm();
+        renderTodos();
+    }
+});

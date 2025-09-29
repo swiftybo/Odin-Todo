@@ -16,33 +16,35 @@
                 />
             </header>
             <h2 class="subtitle">To-do List</h2>
-            <button class="add_btn">Add To-do to Current Project</button>
+            <button class="todoadd_btn">Add To-do to Current Project</button>
             <section id="todo_content"></section>
         </div>
         <div class="edit_form"></div>
-        <div class="add_form">
-            <h2 class="todo_title">New To-do</h2>
-            <label>To-do Title: </label
-            ><input id="new_title" maxlength="22" size="25" /> <br />
+        <form class="add_form" onsubmit="return false">
+            <header class="form_header">
+                <h4 class="form_title">New To-do</h2>
+                <button class="exitform_btn">&#10005;</button>
+            </header>
+            <label for="new_title">To-do Title: </label
+            ><input id="new_title" maxlength="22" size="25" required/> <br />
             <br />
-            <label>Description: </label>
-            <textarea id="new_description" rows="4" cols="40"></textarea>
+            <label for="new_description">Description: </label>
+            <textarea id="new_description" rows="4" cols="40" required></textarea>
             <br />
             <br />
-            <label>Due Date: </label>
-            <input type="date" />
+            <label for="new_date">Due Date: </label>
+            <input type="date" id="new_date" required/>
             <br />
             <br />
-            <label for="priority">Priority: </label
-            ><select name="priority" id="priority">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+            <label for="new_priority">Priority: </label
+            ><select name="priority" id="new_priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
             </select>
             <br />
             <br />
-            <button class="todo_btn close_btn">Close</button>
-            <button class="todo_btn confirm_btn">Confirm</button>;
-        </div>
+            <button class="todo_btn add_btn">Add To-do</button>
+        </form>
     </body>
 </html>
