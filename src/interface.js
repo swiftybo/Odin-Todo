@@ -1,9 +1,11 @@
-import { project_list } from "./projectsLogic";
+import { project, project_list } from "./projectsLogic";
 
 const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
 const add_form = document.querySelector(".add_form");
 const addProject_form = document.querySelector(".project_form");
+
+const project_select = document.getElementById("assigned_project");
 
 const sidebar = document.getElementById("sidebar");
 const sidebar_projects = document.getElementById("sidebar_projects");
@@ -86,6 +88,10 @@ export class UI {
     }
 
     openAddForm() {
+        project_list.map((project) => {
+            const html = `<option value="${project.title}">${project.title}</option>`;
+            project_select.insertAdjacentHTML("afterbegin", html);
+        });
         add_form.style.display = "block";
     }
 

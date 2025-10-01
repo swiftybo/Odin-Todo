@@ -1,7 +1,7 @@
 export const todo_list = [];
 
 export class todo {
-    constructor(title, description, dueDate, priority, project = ["General"]) {
+    constructor(title, description, dueDate, priority, project) {
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -41,10 +41,6 @@ export class todo {
     toggleTodoStatus() {
         this.status = this.status === "Complete" ? "Incomplete" : "Complete";
     }
-}
-
-export function createTodo(title, description, dueDate, priority) {
-    return new todo(title, description, dueDate, priority);
 }
 
 // // Gabriella's code:

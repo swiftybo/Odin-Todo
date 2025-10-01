@@ -11,7 +11,7 @@ export class project {
     }
 }
 
-new project("General");
+new project("All Todos");
 new project("Work");
 new project("Life");
 

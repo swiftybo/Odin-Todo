@@ -20,6 +20,7 @@ const exit_form = document.querySelector(".exitform_btn");
 const add_btn = document.querySelector(".add_btn");
 const add__title = document.getElementById("new_title");
 const add__description = document.getElementById("new_description");
+const selected__project = document.getElementById("assigned_project");
 const add__date = document.getElementById("new_date");
 const add__priority = document.getElementById("new_priority");
 
@@ -33,7 +34,8 @@ new todo(
     "Practice Violin",
     "Practice violin songs for Sophie's wedding.",
     "2025-08-21",
-    "High"
+    "High",
+    "General"
 );
 
 // // LESSONLEARNT todo ID is now based on todo name and due date instead of only time of creation so that multiple todos can be rendered at start.
@@ -41,7 +43,8 @@ new todo(
     "Finish Odin Project",
     "Complete all modules and projects on the Odin Project Intermediate Js Course.",
     "2025-09-26",
-    "High"
+    "High",
+    "General"
 );
 
 function renderTodos() {
@@ -185,14 +188,22 @@ exit_form.addEventListener("click", function () {
 add_btn.addEventListener("click", function () {
     const newTitle = add__title.value;
     const newDescription = add__description.value;
+    const selectedProject = selected__project.value;
     const newDate = add__date.value;
     const newPriority = add__priority.value;
 
     // Ensure all fields in the form are valid before performing any actions
     if (add_form.checkValidity()) {
-        createTodo(newTitle, newDescription, newDate, newPriority);
+        new todo(
+            newTitle,
+            newDescription,
+            newDate,
+            newPriority,
+            selectedProject
+        );
         todoDisplay.exitAddForm();
         renderTodos();
+        console.log(todo_list);
     }
 });
 
