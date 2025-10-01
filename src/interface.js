@@ -1,6 +1,11 @@
+import { project_list } from "./projectsLogic";
+
 const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
 const add_form = document.querySelector(".add_form");
+
+const sidebar = document.getElementById("sidebar");
+const pageContent = document.querySelector(".container");
 
 export class UI {
     constructor() {}
@@ -85,5 +90,23 @@ export class UI {
     exitAddForm() {
         add_form.reset();
         add_form.style.display = "none";
+    }
+
+    openSidebar() {
+        sidebar.style.width = "15.5rem";
+        pageContent.style.marginLeft = "15.5rem";
+    }
+
+    closeSidebar() {
+        sidebar.style.width = "0rem";
+        pageContent.style.marginLeft = "0rem";
+    }
+
+    renderProjects() {
+        project_list.map((project) => {
+            const html = `<button class="navigation_btn">${project.title}</button>`;
+
+            sidebar.insertAdjacentHTML("beforeend", html);
+        });
     }
 }

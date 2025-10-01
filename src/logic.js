@@ -1,7 +1,7 @@
 export const todo_list = [];
 
 export class todo {
-    constructor(title, description, dueDate, priority, project = "General") {
+    constructor(title, description, dueDate, priority, project = ["General"]) {
         this.title = title;
         this.description = description;
         this.priority = priority;

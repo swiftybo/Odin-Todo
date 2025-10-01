@@ -183,7 +183,7 @@ header {
     position: absolute;
     top: 0rem;
     right: 1.5rem;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-left: 3rem;
     border: 0rem;
     background-color: #3d305b;
@@ -193,4 +193,15 @@ header {
 .container {
     transition: margin-left 0.5s;
     padding: 1.5rem;
+}
+
+.newProject_btn {
+    position: relative;
+    top: -0.3rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    background-color: #e07a5f;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    padding: 0.25rem;
 }

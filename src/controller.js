@@ -1,5 +1,6 @@
 // IMPORTS | EXPORTS
 import { todo, todo_list, createTodo } from "./logic.js";
+import { project_list } from "./projectsLogic.js";
 import { UI } from "./interface.js";
 
 // DOM Elements
@@ -47,6 +48,7 @@ function renderTodos() {
 
 renderTodos();
 console.log(todo_list);
+todoDisplay.renderProjects();
 
 // // LESSONLEARNT This code is wrong by only adding event listeners to existing HTML DOM elements and not dynamically created DOM element. This has been fixed by using event delegation through the addGlobalEventListener function.
 // editBtn.addEventListener("click", function () {
@@ -190,13 +192,7 @@ add_btn.addEventListener("click", function () {
 });
 
 // Event listener to expand collapsible sidebar
-sidebarBtn.addEventListener("click", function () {
-    document.getElementById("sidebar").style.width = "15.5rem";
-    document.querySelector(".container").style.marginLeft = "15.5rem";
-});
+sidebarBtn.addEventListener("click", todoDisplay.openSidebar);
 
 // Event listener to shrink collapsible sidebar
-collapseBtn.addEventListener("click", function () {
-    document.getElementById("sidebar").style.width = "0rem";
-    document.querySelector(".container").style.marginLeft = "0rem";
-});
+collapseBtn.addEventListener("click", todoDisplay.closeSidebar);
