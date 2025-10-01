@@ -225,3 +225,5 @@ addProject_btn.addEventListener("click", function () {
     newProject_title.value = "";
     todoDisplay.closeAddProjectForm();
 });
+
+addGlobalEventListener("click");

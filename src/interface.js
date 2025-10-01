@@ -113,7 +113,7 @@ export class UI {
     renderProjects() {
         sidebar_projects.innerHTML = "";
         project_list.map((project) => {
-            const html = `<button class="navigation_btn">${project.title}</button>`;
+            const html = `<button class="navigation_btn" id="${project.title}">${project.title}</button>`;
 
             sidebar_projects.insertAdjacentHTML("beforeend", html);
         });
