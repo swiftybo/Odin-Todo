@@ -8,6 +8,7 @@ import { UI } from "./interface.js";
 const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
 const add_form = document.querySelector(".add_form");
+const sidebar_projects = document.getElementById("sidebar_projects");
 
 // Buttons - Top Level
 const sidebarBtn = document.getElementById("sidebar_btn");
@@ -35,7 +36,7 @@ new todo(
     "Practice violin songs for Sophie's wedding.",
     "2025-08-21",
     "High",
-    "General"
+    "Life"
 );
 
 // // LESSONLEARNT todo ID is now based on todo name and due date instead of only time of creation so that multiple todos can be rendered at start.
@@ -47,14 +48,14 @@ new todo(
     "General"
 );
 
-function renderTodos() {
+function renderTodos(list) {
     todo_content.innerHTML = "";
-    todo_list.forEach((todo) => {
+    list.forEach((todo) => {
         todoDisplay.renderTodo(todo);
     });
 }
 
-renderTodos();
+renderTodos(todo_list);
 console.log(todo_list);
 todoDisplay.renderProjects();
 
@@ -109,7 +110,7 @@ addGlobalEventListener("click", ".done_btn", todo_content, function (e) {
     selectedTodo.toggleTodoStatus();
     console.log(selectedTodo);
 
-    renderTodos();
+    renderTodos(todo_list);
 });
 
 // Event listener to mark a todo as "Incomplete"
@@ -120,7 +121,7 @@ addGlobalEventListener("click", ".undone_btn", todo_content, function (e) {
     selectedTodo.toggleTodoStatus();
     console.log(selectedTodo);
 
-    renderTodos();
+    renderTodos(todo_list);
 });
 
 // Event listener to close 'edit form'
@@ -202,7 +203,7 @@ add_btn.addEventListener("click", function () {
             selectedProject
         );
         todoDisplay.exitAddForm();
-        renderTodos();
+        renderTodos(todo_list);
         console.log(todo_list);
     }
 });
@@ -226,4 +227,22 @@ addProject_btn.addEventListener("click", function () {
     todoDisplay.closeAddProjectForm();
 });
 
-addGlobalEventListener("click");
+// Event listener for project buttons
+addGlobalEventListener(
+    "click",
+    ".navigation_btn",
+    sidebar_projects,
+    function (e) {
+        const [selectedProject] = project_list.filter((project) => {
+            return project.title === e.target.id;
+        });
+        if (selectedProject.title === "All Todos") {
+            renderTodos(todo_list);
+        } else {
+            const filteredTodoList = todo_list.filter(
+                (todo) => todo.project === selectedProject.title
+            );
+            renderTodos(filteredTodoList);
+        }
+    }
+);
