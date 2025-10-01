@@ -1,6 +1,6 @@
 // IMPORTS | EXPORTS
 import { todo, todo_list, createTodo } from "./logic.js";
-import { project_list } from "./projectsLogic.js";
+import { project, project_list } from "./projectsLogic.js";
 import { UI } from "./interface.js";
 
 // DOM Elements
@@ -22,6 +22,11 @@ const add__title = document.getElementById("new_title");
 const add__description = document.getElementById("new_description");
 const add__date = document.getElementById("new_date");
 const add__priority = document.getElementById("new_priority");
+
+// Buttons - Navigation Bar
+const newProject_btn = document.querySelector(".newProject_btn");
+const addProject_btn = document.querySelector(".addProject_btn");
+const newProject_title = document.getElementById("project_title");
 
 const todoDisplay = new UI();
 new todo(
@@ -196,3 +201,16 @@ sidebarBtn.addEventListener("click", todoDisplay.openSidebar);
 
 // Event listener to shrink collapsible sidebar
 collapseBtn.addEventListener("click", todoDisplay.closeSidebar);
+
+// Event listener to add project and open Add Project Form
+newProject_btn.addEventListener("click", function () {
+    todoDisplay.openAddProjectForm();
+});
+
+// Event listener to submit new project to project list
+addProject_btn.addEventListener("click", function () {
+    new project(newProject_title.value);
+    todoDisplay.renderProjects();
+    newProject_title.value = "";
+    todoDisplay.closeAddProjectForm();
+});

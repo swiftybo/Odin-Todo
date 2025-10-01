@@ -3,8 +3,10 @@ import { project_list } from "./projectsLogic";
 const todo_content = document.getElementById("todo_content");
 const edit_form = document.querySelector(".edit_form");
 const add_form = document.querySelector(".add_form");
+const addProject_form = document.querySelector(".project_form");
 
 const sidebar = document.getElementById("sidebar");
+const sidebar_projects = document.getElementById("sidebar_projects");
 const pageContent = document.querySelector(".container");
 
 export class UI {
@@ -52,7 +54,7 @@ export class UI {
 
         const html = `<h2 class="form_title">Edit "${todo.title}" Todo</h2><br>
         <label for="amended_description"><strong>Description: </strong></label>
-        <textarea id="amended_description" rows="4" cols="40" required placeholder="Previous description: ${todo.description}">${todo.description} required</textarea></div>
+        <textarea id="amended_description" rows="4" cols="40" required placeholder="Previous description: ${todo.description}">${todo.description}</textarea></div>
         <br> <br>
         <label for="amended_date"><strong>Due Date: </strong></label>
         <input type="date" id="amended_date" placeholder="Previous date: ${reformattedDate}" value="${reformattedDate}" required/>
@@ -103,10 +105,19 @@ export class UI {
     }
 
     renderProjects() {
+        sidebar_projects.innerHTML = "";
         project_list.map((project) => {
             const html = `<button class="navigation_btn">${project.title}</button>`;
 
-            sidebar.insertAdjacentHTML("beforeend", html);
+            sidebar_projects.insertAdjacentHTML("beforeend", html);
         });
+    }
+
+    openAddProjectForm() {
+        addProject_form.style.display = "block";
+    }
+
+    closeAddProjectForm() {
+        addProject_form.style.display = "none";
     }
 }

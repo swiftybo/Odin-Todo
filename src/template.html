@@ -10,6 +10,7 @@
         <div id="sidebar">
             <button class="newProject_btn">Add New Project</button>
             <button class="collapse_btn">&times;</button>
+            <div id="sidebar_projects"></div>
         </div>
         <div class="container">
             <button id="sidebar_btn">&#9776</button>
@@ -50,6 +51,11 @@
             <br />
             <br />
             <button type="button" class="todo_btn add_btn">Add To-do</button>
+        </form>
+        <form class="project_form">
+            <label for="project_title">New Project Title: </label>
+            <input id="project_title", maxlength="18" size="25" required>
+            <button type="button" class="addProject_btn">Submit</button>
         </form>
     </body>
 </html>

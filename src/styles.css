@@ -113,7 +113,7 @@ header {
     transform: translate(-50%, -50%);
     padding: 1rem;
     border-radius: 0.25rem;
-    background-color: #d4c1ec;
+    background-color: #916bc0;
     outline: 2px solid black;
     min-width: 30vw;
 }
@@ -130,7 +130,7 @@ header {
     transform: translate(-50%, -50%);
     padding: 1rem;
     border-radius: 0.25rem;
-    background-color: #d4c1ec;
+    background-color: #916bc0;
     outline: 2px solid black;
     min-width: 30vw;
 }
@@ -203,5 +203,17 @@ header {
     background-color: #e07a5f;
     border-radius: 0.5rem;
     margin: 0.5rem;
-    padding: 0.25rem;
+    padding: 0.5rem;
+}
+.project_form {
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    background-color: #916bc0;
+    border: 1px solid black;
+    padding: 2rem;
+    border-radius: 0.5rem;
 }
